@@ -1,0 +1,13 @@
+WITH CTE_MY_DATE AS (
+    SELECT DATEADD(MONTH, SEQ4(), '2015-01-01') AS MY_DATE
+      FROM TABLE(GENERATOR(ROWCOUNT=>120))  -- Number of days after reference date in previous line
+  )
+  SELECT MY_DATE
+        ,YEAR(MY_DATE)
+        ,MONTH(MY_DATE)
+        ,MONTHNAME(MY_DATE)
+        ,DAY(MY_DATE)
+        ,DAYOFWEEK(MY_DATE)
+        ,WEEKOFYEAR(MY_DATE)
+        ,DAYOFYEAR(MY_DATE)
+    FROM CTE_MY_DATE
